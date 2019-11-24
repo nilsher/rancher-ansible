@@ -9,7 +9,7 @@ nodes:
   - worker
   - etcd
   hostname_override: rancher1
-  user: hawk
+  user: {{ ssh_user }}
   docker_socket: /var/run/docker.sock
   ssh_key: ""
   ssh_key_path: ~/.ssh/id_rsa
@@ -25,7 +25,7 @@ nodes:
   - worker
   - etcd
   hostname_override: rancher2
-  user: hawk
+  user: {{ ssh_user }}
   docker_socket: /var/run/docker.sock
   ssh_key: ""
   ssh_key_path: ~/.ssh/id_rsa
