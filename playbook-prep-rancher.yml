@@ -4,3 +4,4 @@
   roles:
     - docker
     - swap
+    - rancher_dl
