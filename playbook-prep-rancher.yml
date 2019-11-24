@@ -5,6 +5,7 @@
     - docker
     - swap
     - rancher_dl
+    - rancher
   tasks:
   - name: "Insert passwordless sudo for ssh_user"
     lineinfile:

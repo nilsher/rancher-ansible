@@ -1,0 +1,12 @@
+---
+
+- name: Install cluster.yml
+  template:
+    src: cluster.yml.tmpl
+    dest: "/home/{{ ssh_user }}/cluster.yml"
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0644'
+
+- debug:
+    msg: "Runs rke upp in {{ ssh_user }} home folder"

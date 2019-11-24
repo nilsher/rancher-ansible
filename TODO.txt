@@ -1,1 +1,2 @@
+templatify cluster.yml with ips
 generate rancherconfig yaml
