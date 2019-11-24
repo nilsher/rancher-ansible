@@ -1,4 +1,2 @@
 Create a loadbalancer
-get cubeconfig to be able to run kubectl
 templatify cluster.yml with ips
-generate rancherconfig yaml
