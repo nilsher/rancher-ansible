@@ -5,3 +5,9 @@
     - docker
     - swap
     - rancher_dl
+  tasks:
+  - name: "Insert passwordless sudo for ssh_user"
+    lineinfile:
+      path: /etc/sudoers
+      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+    become: true

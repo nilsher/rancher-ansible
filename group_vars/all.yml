@@ -10,3 +10,5 @@ kubectl_version: "v1.16.2"
 
 helm_version: "3.0.0"
 helm_checksum: "10e1fdcca263062b1d7b2cb93a924be1ef3dd6c381263d8151dd1a20a3d8c0dc"
+
+ssh_user: "hawk"

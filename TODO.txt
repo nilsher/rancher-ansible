@@ -1,2 +1,1 @@
-sudoless user
 generate rancherconfig yaml

@@ -45,3 +45,10 @@
     group: "root"
     mode: "0644"
   become: yes
+
+- name: adding existing user '{{ ssh_user }}' to group sudo
+  user:
+    name: "{{ ssh_user }}"
+    groups: docker
+    append: yes
+  become: yes
