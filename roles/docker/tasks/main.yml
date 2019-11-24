@@ -27,3 +27,21 @@
     -  "containerd.io"
   become: yes
 
+
+- name: Enable pinned Docker version
+  template:
+    src: "docker.pref.j2"
+    dest: "/etc/apt/preferences.d/docker.pref"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  become: yes
+
+- name: Enable pinned Docker cli version
+  template:
+    src: "docker-cli.pref.j2"
+    dest: "/etc/apt/preferences.d/docker-cli.pref"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  become: yes
