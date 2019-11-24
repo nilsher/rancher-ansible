@@ -6,7 +6,7 @@ docker_version_light: "5:18.09.*"
 rancher_version: "0.3.2"
 rancher_checksum: "96b366fe1faaa668b3e47f5b6d4bfd6334224e33c21e55dc79ec96f85e0e48e8"
 
-kubectl_version: "v1.16.3"
+kubectl_version: "v1.16.2"
 
 helm_version: "3.0.0"
 helm_checksum: "10e1fdcca263062b1d7b2cb93a924be1ef3dd6c381263d8151dd1a20a3d8c0dc"
