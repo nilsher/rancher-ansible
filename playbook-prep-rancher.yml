@@ -3,3 +3,4 @@
 - hosts: ranchers
   roles:
     - docker
+    - swap
