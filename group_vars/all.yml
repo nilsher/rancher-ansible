@@ -1,7 +1,7 @@
 ---
 
-docker_version: "5:18.09.9~3-0~ubuntu-bionic"
-docker_version_light: "5:18.09.*"
+docker_version: "5:19.03.5~3-0~ubuntu-bionic"
+docker_version_light: "5:19.03.*"
 
 rancher_version: "0.3.2"
 rancher_checksum: "96b366fe1faaa668b3e47f5b6d4bfd6334224e33c21e55dc79ec96f85e0e48e8"
