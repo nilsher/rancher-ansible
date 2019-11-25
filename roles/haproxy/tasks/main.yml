@@ -1,0 +1,24 @@
+---
+
+- name: Install haproxy
+  apt:
+    name: haproxy
+    state: present
+  become: true
+
+- name: Install haproxy.cfg
+  template:
+    src: haproxy.cfg.tmpl
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: '0644'
+  register: ha_cfg
+  become: true
+
+- name: Restart service haproxy
+  service:
+    name: haproxy
+    state: restarted
+  when: ha_cfg is changed
+  become: true

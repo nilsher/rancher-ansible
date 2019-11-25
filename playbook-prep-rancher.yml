@@ -12,3 +12,13 @@
       path: /etc/sudoers
       line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
     become: true
+
+- hosts: loadbalancer
+  roles:
+    - haproxy
+  tasks:
+  - name: "Insert passwordless sudo for ssh_user"
+    lineinfile:
+      path: /etc/sudoers
+      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+    become: true
