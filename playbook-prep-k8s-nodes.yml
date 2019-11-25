@@ -1,0 +1,13 @@
+---
+
+- hosts: kubernetes
+  roles:
+    - docker
+    - swap
+  tasks:
+  - name: "Insert passwordless sudo for ssh_user"
+    lineinfile:
+      path: /etc/sudoers
+      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+    become: true
+
