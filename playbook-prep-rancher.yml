@@ -5,13 +5,17 @@
     - docker
     - swap
     - rancher_dl
-    - rancher
+    - rancher-cluster
   tasks:
   - name: "Insert passwordless sudo for ssh_user"
     lineinfile:
       path: /etc/sudoers
       line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
     become: true
+
+- hosts: rancher_master
+  roles:
+    - helm
 
 - hosts: loadbalancer
   roles:
