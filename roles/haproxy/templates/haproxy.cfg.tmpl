@@ -46,7 +46,7 @@ backend backend_http
         option tcplog
         balance leastconn
 {% for server in groups["ranchers"] %}
-	server upstream {{ hostvars[server].ip }}:80
+	server {{ server }} {{ hostvars[server].ip }}:80
 {% endfor %}
 
 
@@ -59,7 +59,7 @@ backend backend_https
 	mode tcp
         balance leastconn
 {% for server in groups["ranchers"] %}
-	server upstream {{ hostvars[server].ip }}:443
+	server {{ server }} {{ hostvars[server].ip }}:443
 {% endfor %}
 
 listen  stats   
