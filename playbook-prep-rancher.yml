@@ -27,4 +27,5 @@
       #    become: true
 - hosts: rancher1
   roles:
-    - pgsql
+    - role: pgsql
+      tags: pgsql

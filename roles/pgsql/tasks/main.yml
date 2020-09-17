@@ -21,6 +21,7 @@
   apt:
     pkg:
     -  "postgresql={{pgsql_version}}"
+    -  "python3-psycopg2"
   become: yes
 
 - name: Enable pinned pgsql version
@@ -31,3 +32,12 @@
     group: "root"
     mode: "0644"
   become: yes
+
+- name: Create a new database with name "acme"
+  postgresql_db:
+    name: rancher
+    state: present
+  become: yes
+  become_user: postgres
+  vars:
+      ansible_ssh_pipelining: true
