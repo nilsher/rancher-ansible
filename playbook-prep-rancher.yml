@@ -4,8 +4,8 @@
   roles:
     - docker
     - swap
-    - rancher_dl
-    - rancher-cluster
+      #    - rancher_dl
+      #    - rancher-cluster
   tasks:
   - name: "Insert passwordless sudo for ssh_user"
     lineinfile:
