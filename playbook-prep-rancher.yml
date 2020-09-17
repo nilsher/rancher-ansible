@@ -3,26 +3,28 @@
 - hosts: ranchers
   roles:
     - docker
-    - swap
       #    - rancher_dl
       #    - rancher-cluster
-  tasks:
-  - name: "Insert passwordless sudo for ssh_user"
-    lineinfile:
-      path: /etc/sudoers
-      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
-    become: true
-
-- hosts: rancher_master
+      #  tasks:
+      #  - name: "Insert passwordless sudo for ssh_user"
+      #    lineinfile:
+      #      path: /etc/sudoers
+      #      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+      #    become: true
+      #
+      #- hosts: rancher_master
+      #  roles:
+      #    - helm
+      #
+      #- hosts: loadbalancer
+      #  roles:
+      #    - haproxy
+      #  tasks:
+      #  - name: "Insert passwordless sudo for ssh_user"
+      #    lineinfile:
+      #      path: /etc/sudoers
+      #      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
+      #    become: true
+- hosts: rancher1
   roles:
-    - helm
-
-- hosts: loadbalancer
-  roles:
-    - haproxy
-  tasks:
-  - name: "Insert passwordless sudo for ssh_user"
-    lineinfile:
-      path: /etc/sudoers
-      line: "{{ ssh_user }} ALL=(ALL) NOPASSWD: ALL"
-    become: true
+    - pgsql
