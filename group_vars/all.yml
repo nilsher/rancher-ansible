@@ -1,9 +1,2 @@
 ---
-
-docker_version: "5:19.03.12~3-0~ubuntu-focal"
-docker_version_light: "5:19.03.*"
-
-pgsql_version: "12+216.pgdg20.04+1"
-pgsql_light: "12+216.pgdg.*"
-
 ssh_user: "hawk"

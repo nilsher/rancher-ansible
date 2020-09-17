@@ -1,0 +1,4 @@
+---
+pgsql_version: "12+216.pgdg20.04+1"
+pgsql_light: "12+216.pgdg.*"
+
