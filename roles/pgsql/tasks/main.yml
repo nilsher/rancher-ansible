@@ -33,10 +33,43 @@
     mode: "0644"
   become: yes
 
-- name: Create a new database with name "acme"
+- name: Enable tcp for CIDR
+  lineinfile:
+    path: /etc/postgresql/12/main/pg_hba.conf
+    line: 'host    all             all             192.168.5.1/23            md5'
+  become: yes
+  register: hba_conf
+
+- name: Enable tcp for CIDR
+  lineinfile:
+    path: /etc/postgresql/12/main/postgresql.conf
+    line: "listen_addresses = '*'"
+  become: yes
+  register: pg_listen
+
+- name: restart postgres
+  systemd:
+    state: restarted
+    name: postgresql
+  when: hba_conf is changed or pg_listen is changed
+  become: yes
+
+
+- name: Create a new database with name "rancher"
   postgresql_db:
     name: rancher
     state: present
+  become: yes
+  become_user: postgres
+  vars:
+      ansible_ssh_pipelining: true
+
+- name: Connect to rancher database, create rancher user
+  postgresql_user:
+    db: rancher
+    name: "{{ rancher_db_user }}"
+    password: "{{ rancher_db_passwd }}"
+    priv: "ALL"
   become: yes
   become_user: postgres
   vars:

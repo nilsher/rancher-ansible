@@ -1,0 +1,20 @@
+---
+
+- name: Check if k3s.sh exist
+  stat:
+    path: /opt/k3s.sh
+  register: rancher_stat_result
+
+- name: Download Rancher bootstrap shell script
+  get_url:
+    url: https://get.k3s.io/
+    dest: /opt/k3s.sh
+    mode: '0540'
+  become: yes
+  #  when: not rancher_stat_result.stat.exists
+
+- name: Boostrap k3s node
+  shell: "./k3s.sh server --datastore-endpoint=\"postgres://{{ rancher_db_user }}:{{ rancher_db_user }}@{{ pgsql_host }}:5432/rancher\""
+  args:
+    chdir: /opt/
+  become: yes

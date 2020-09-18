@@ -29,3 +29,9 @@
   roles:
     - role: pgsql
       tags: pgsql
+
+- hosts: ranchers
+  serial: 1
+  roles:
+    - role: k3s-rancher-server
+      tags: k3s-rancher

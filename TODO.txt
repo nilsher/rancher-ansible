@@ -1,2 +1,1 @@
-Create a loadbalancer
-templatify cluster.yml with ips
+Replace postgres with a clustered DB
