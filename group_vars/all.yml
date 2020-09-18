@@ -5,4 +5,4 @@ rancher_db_passwd: "rancher"
 rancher_db_user: "rancher"
 pgsql_host: "rancher1.cubical.se"
 
-cluster_hostname: "rancher.se"
+cluster_hostname: "www.rancher.se"
