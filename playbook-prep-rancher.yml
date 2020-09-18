@@ -35,3 +35,10 @@
   roles:
     - role: k3s-rancher-server
       tags: k3s-rancher
+
+- hosts: rancher1
+  roles:
+    - role: helm
+      tags: helm
+    - role: rancher
+      tags: rancher

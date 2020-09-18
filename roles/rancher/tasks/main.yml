@@ -1,0 +1,16 @@
+---
+- name: Check that the somefile.conf exists
+  stat:
+    path: /opt/rancher-bootstrap
+  register: rancher_stat_result
+
+- name: Bootstrap rancher
+  import_tasks: rancher.yml
+  when: not rancher_stat_result.stat.exists
+
+- name: Create rancher-bootstrap
+  file:
+    path: /opt/rancher-bootstrap
+    state: touch
+  when: not rancher_stat_result.stat.exists
+  become: yes

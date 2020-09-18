@@ -1,0 +1,32 @@
+---
+
+- name: Create Rancher namespace
+  shell: kubectl create namespace cattle-system
+  become: yes
+
+- name: Install jetstack
+  shell: kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.0/cert-manager.crds.yaml
+  become: yes
+
+- name: Create cert-manager namespace
+  shell: kubectl create namespace cert-manager
+  become: yes
+
+- name: Add jetstack repo
+  shell: helm repo add jetstack https://charts.jetstack.io
+  become: yes
+
+- name: Update helm repo
+  shell: helm repo update
+  become: yes
+
+- name: Install cert-manager
+  shell:  KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v0.15.0
+  become: yes
+# TODO wait for cert-manager to get up
+
+- name: Install rancher
+  shell:  "KUBECONFIG=/etc/rancher/k3s/k3s.yaml helm install rancher rancher-stable/rancher --namespace cattle-system --set hostname={{ cluster_hostname }}"
+  become: yes
+# TODO wait for rancher to get up
+
