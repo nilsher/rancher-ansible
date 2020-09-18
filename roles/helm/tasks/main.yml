@@ -1,0 +1,23 @@
+---
+- name: Add helm apt key
+  apt_key:
+    url: https://baltocdn.com/helm/signing.asc
+    state: present
+  become: yes
+
+- name: Add Docker APT repository
+  apt_repository:
+    repo: deb https://baltocdn.com/helm/stable/debian/ all main
+  become: yes
+
+- name: "Install helm"
+  apt:
+    pkg:
+    -  "helm={{helm_version}}"
+  become: yes
+  register: helm_installed
+
+- name: Install helm rancher repo
+  shell: helm repo add rancher-stable https://releases.rancher.com/server-charts/stable
+  become: yes
+  when: helm_installed is changed
